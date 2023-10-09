@@ -15,6 +15,7 @@ import AddIcon from "@mui/icons-material/Add";
 
 import { IProductSchemasFormValues } from "../types/productionSchemas.type";
 import { productionSchemasSchema } from "../utils/validations/productionSchemas";
+import ProductionSchemaBatchesField from "./ProductionSchemaBatchesField";
 
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
@@ -38,7 +39,12 @@ const StyledFormRowLabel = styled("div")({
 const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];
 
 const fieldInitialEmptyValues = {
-  name: "Nom du schéma de production"
+  name: "Nom du schéma de production",
+  batches: [
+    {
+      productionDay: "00"
+    }
+  ]
 };
 
 const initialValues: IProductSchemasFormValues = {
@@ -50,8 +56,6 @@ const ProductionSchemasForm = () => {
 
   const handleConfirm = () => {
     // if (!formikRef.current) return;
-    console.log("handleConfirm");
-
     (formikRef.current as any)?.submitForm();
   };
 
@@ -77,7 +81,7 @@ const ProductionSchemasForm = () => {
         innerRef={formikRef}
         validationSchema={productionSchemasSchema}
       >
-        {({ values, setFieldValue }) => {
+        {({ values }) => {
           return (
             <Form className="flexColumn stretchSelf flex1">
               <FieldArray name="productionSchemas">
@@ -139,17 +143,15 @@ const ProductionSchemasForm = () => {
                                 </Box>
                               </div>
                             </StyledFormRowLabel>
-                            {/* </Grid>
-                                  <Grid item xs={1} sx={{ position: "relative" }}>
-                                    <IconButton
-                                      type="button"
-                                      onClick={() => remove(index)}
-                                      sx={{ position: "absolute", bottom: 0 }}
-                                    >
-                                      <DeleteIcon />
-                                    </IconButton>
-                                  </Grid>
-                                </Grid> */}
+                            <div>
+                              <ProductionSchemaBatchesField
+                                batches={
+                                  values.productionSchemas[index].batches
+                                }
+                                parentIndex={index}
+                                name={`productionSchemas.${index}.batches`}
+                              />
+                            </div>
                           </StyledFormRow>
                         ))}
                       <Stack spacing={0}>
