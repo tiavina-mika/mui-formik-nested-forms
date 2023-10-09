@@ -105,6 +105,7 @@ const ProductionSchemaBatchesField = ({
                             options={weekDaysOptions}
                             sx={{ minWidth: 100 }}
                             multiple
+                            renderValue={(selected) => selected.join(", ")}
                           />
                           <ErrorMessage
                             name={`${name}.${index}.sellDays.${sellDayIndex}`}
