@@ -19,7 +19,7 @@ const FormikTextField = ({ field, ...props }) => (
 );
 
 const fieldInitialEmptyValues = {
-  name: ""
+  name: "Nom du schéma de production"
 };
 const initialValues: IProductSchemasFormValues = {
   productionSchemas: [fieldInitialEmptyValues]
@@ -72,7 +72,7 @@ const ProductionSchemasForm = () => {
                               <Field
                                 name={`productionSchemas.${index}.name`}
                                 component={FormikTextField}
-                                label="Name"
+                                placeholder="Name"
                                 variant="standard"
                               />
                               <ErrorMessage
