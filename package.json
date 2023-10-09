@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "formik": "2.2.9",
+    "lodash": "4.17.21",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest",
+    "yup": "1.0.2"
+  },
+  "description": "https://github.com/mui/material-ui/blob/v5.13.6/docs/data/material/components/dialogs/SimpleDialog.tsx",
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "main": "index.tsx",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "name": "c9cnzl",
+  "version": "0.0.0"
+}

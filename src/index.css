@@ -1,0 +1,130 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  text-indent: 0;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  font-weight: 400;
+}
+h2,
+h3 {
+  color: rgba(0, 0, 0, 0.870588);
+  font-weight: 400;
+  margin: 10px 0 14px;
+  font-size: 1.3em;
+}
+h3 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+input:-webkit-autofill {
+  /* removes the ugly yellow bg when autofilled */
+  box-shadow: 0 0 0 1000px white inset;
+}
+input[type="submit"] {
+  visibility: hidden;
+  position: absolute;
+  z-index: -1;
+  tab-index: -1;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.react-layout-components--box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+/*----- Flex -------*/
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.flexCenter {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.stretch {
+  align-items: stretch;
+}
+.center {
+  align-items: center;
+}
+.flexEnd {
+  align-items: flex-end;
+}
+.spaceBetween {
+  justify-content: space-between;
+}
+.spaceAround {
+  justify-content: space-around;
+}
+.justifyStart {
+  justify-content: flex-start;
+}
+.justifyEnd {
+  justify-content: flex-end;
+}
+.justifyCenter {
+  justify-content: center;
+}
+.stretchSelf {
+  align-self: stretch;
+}
+.flexStartSelf {
+  align-self: flex-start;
+}
+.flexEndSelf {
+  align-self: flex-end;
+}
+.flex1 {
+  flex: 1;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.noWrap {
+  flex-wrap: nowrap;
+}
+.shrink0 {
+  flex-shrink: 0;
+}
+.shrink1 {
+  flex-shrink: 1;
+}
+/*------------------*/
+.minHeight100 {
+  min-height: 100vh;
+}
+
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
