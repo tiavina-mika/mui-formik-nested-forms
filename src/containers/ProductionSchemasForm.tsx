@@ -7,6 +7,7 @@ import {
   FormHelperText,
   Stack,
   TextField,
+  Typography,
   styled
 } from "@mui/material";
 // import DeleteIcon from "@mui/icons-material/Delete";
@@ -30,9 +31,16 @@ const StyledFormRowHeader = styled("div")({
   padding: 16
 });
 
+const StyledFormRowLabel = styled("div")({
+  backgroundColor: "#F0F9FF"
+});
+
+const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];
+
 const fieldInitialEmptyValues = {
   name: "Nom du schéma de production"
 };
+
 const initialValues: IProductSchemasFormValues = {
   productionSchemas: [fieldInitialEmptyValues]
 };
@@ -80,9 +88,9 @@ const ProductionSchemasForm = () => {
                         values.productionSchemas.map((_, index: number) => (
                           <StyledFormRow
                             key={index}
-                            className="flexRow justifyCenter"
+                            className="flexColumn justifyCenter"
                           >
-                            <StyledFormRowHeader className="flexCenter flex1">
+                            <StyledFormRowHeader className="flexCenter stretchSelf">
                               <div>
                                 {/* <Grid item xs={3}> */}
                                 <Stack spacing={1}>
@@ -103,6 +111,34 @@ const ProductionSchemasForm = () => {
                                 </Stack>
                               </div>
                             </StyledFormRowHeader>
+                            <StyledFormRowLabel className="flexRow stretchSelf">
+                              <div className="flexCenter stretchSelf">
+                                <Typography>Jour de production</Typography>
+                              </div>
+                              <div className="flexCenter stretchSelf">
+                                <Typography>Jour de barquettage</Typography>
+                              </div>
+                              <div className="flexCenter flex1">
+                                <Box
+                                  sx={{ height: 48 }}
+                                  className="flexCenter stretchSelf"
+                                >
+                                  <Typography>Jour de vente</Typography>
+                                </Box>
+                                <Box
+                                  sx={{ height: 52 }}
+                                  className="flexCenter stretchSelf"
+                                >
+                                  <div className="center flex1 flexRow justifyCenter stretchSelf">
+                                    {brands.map((brand, index) => (
+                                      <div className="flex1 flexCenter">
+                                        {brand}
+                                      </div>
+                                    ))}
+                                  </div>
+                                </Box>
+                              </div>
+                            </StyledFormRowLabel>
                             {/* </Grid>
                                   <Grid item xs={1} sx={{ position: "relative" }}>
                                     <IconButton
