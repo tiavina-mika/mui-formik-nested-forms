@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
-import { Box, Fab, FormHelperText, Stack, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Fab,
+  FormHelperText,
+  Stack,
+  TextField
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -18,15 +25,35 @@ const initialValues: IProductSchemasFormValues = {
 };
 
 const ProductionSchemasForm = () => {
+  const formikRef = useRef();
+
+  const handleConfirm = () => {
+    // if (!formikRef.current) return;
+    console.log("handleConfirm");
+
+    (formikRef.current as any)?.submitForm();
+  };
+
+  const handleCancel = () => console.log("cancel");
+
   const handleSubmit = (values: any) => {
     console.log("values", values);
   };
 
   return (
-    <div className="stretchSelf flex1">
+    <div className="flexColumn stretchSelf flex1">
+      <div className="flexRow justifyEnd stretchSelf">
+        <Stack direction="row" spacing={2}>
+          <Button onClick={handleCancel}>Annuler</Button>
+          <Button variant="contained" onClick={handleConfirm}>
+            Enregister
+          </Button>
+        </Stack>
+      </div>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
+        innerRef={formikRef}
         // validationSchema={ReportOrderRDSchema}
       >
         {({ values, setFieldValue }) => {
