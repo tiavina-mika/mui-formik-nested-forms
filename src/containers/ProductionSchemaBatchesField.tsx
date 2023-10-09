@@ -73,23 +73,26 @@ const ProductionSchemaBatchesField = ({
                     <AddIcon />
                   </IconButton>
                   {/* production day & packaging day */}
-                  {weekDays.map((weekday, weekDayIndex) => (
-                    <Stack spacing={1} key={weekday + weekDayIndex}>
-                      <Field
-                        name={`${name}.${index}.${weekday}`}
-                        component={FormikSelectField}
-                        placeholder="Day"
-                        variant="standard"
-                        options={weekDaysOptions}
-                      />
-                      <ErrorMessage
-                        name={`${name}.${index}.${weekday}`}
-                        render={(message: string) => (
-                          <FormHelperText error>{message}</FormHelperText>
-                        )}
-                      />
-                    </Stack>
-                  ))}
+                  <Stack direction="row" spacing={2}>
+                    {weekDays.map((weekday, weekDayIndex) => (
+                      <Stack spacing={1} key={weekday + weekDayIndex}>
+                        <Field
+                          name={`${name}.${index}.${weekday}`}
+                          component={FormikSelectField}
+                          placeholder="Day"
+                          variant="standard"
+                          options={weekDaysOptions}
+                          sx={{ minWidth: 100 }}
+                        />
+                        <ErrorMessage
+                          name={`${name}.${index}.${weekday}`}
+                          render={(message: string) => (
+                            <FormHelperText error>{message}</FormHelperText>
+                          )}
+                        />
+                      </Stack>
+                    ))}
+                  </Stack>
                 </div>
               ))}
             <Stack spacing={0}>
