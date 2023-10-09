@@ -6,7 +6,8 @@ import {
   Fab,
   FormHelperText,
   Stack,
-  TextField
+  TextField,
+  styled
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
@@ -17,6 +18,12 @@ import { productionSchemasSchema } from "../utils/validations/productionSchemas"
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
 );
+
+const StyledFormRow = styled("div")({
+  borderRadius: 6,
+  border: "1px solid #E6E6E6",
+  background: "#FFF"
+});
 
 const fieldInitialEmptyValues = {
   name: "Nom du schéma de production"
@@ -59,42 +66,44 @@ const ProductionSchemasForm = () => {
       >
         {({ values, setFieldValue }) => {
           return (
-            <Form>
+            <Form className="flexColumn stretchSelf flex1">
               <FieldArray name="productionSchemas">
                 {({ remove, insert }) => (
-                  <div>
-                    <Stack spacing={1}>
+                  <StyledFormRow className="flexColumn stretchSelf">
+                    <Stack spacing={1} className="stretchSelf">
                       {values.productionSchemas.length &&
                         values.productionSchemas.map((_, index: number) => (
-                          <div key={index}>
-                            {/* <Grid item xs={3}> */}
-                            <Stack spacing={1}>
-                              <Field
-                                name={`productionSchemas.${index}.name`}
-                                component={FormikTextField}
-                                placeholder="Name"
-                                variant="standard"
-                              />
-                              <ErrorMessage
-                                name={`productionSchemas.${index}.name`}
-                                render={(message: string) => (
-                                  <FormHelperText error>
-                                    {message}
-                                  </FormHelperText>
-                                )}
-                              />
-                            </Stack>
+                          <div key={index} className="flexRow justifyCenter">
+                            <Box>
+                              {/* <Grid item xs={3}> */}
+                              <Stack spacing={1}>
+                                <Field
+                                  name={`productionSchemas.${index}.name`}
+                                  component={FormikTextField}
+                                  placeholder="Name"
+                                  variant="standard"
+                                />
+                                <ErrorMessage
+                                  name={`productionSchemas.${index}.name`}
+                                  render={(message: string) => (
+                                    <FormHelperText error>
+                                      {message}
+                                    </FormHelperText>
+                                  )}
+                                />
+                              </Stack>
+                            </Box>
                             {/* </Grid>
-                                <Grid item xs={1} sx={{ position: "relative" }}>
-                                  <IconButton
-                                    type="button"
-                                    onClick={() => remove(index)}
-                                    sx={{ position: "absolute", bottom: 0 }}
-                                  >
-                                    <DeleteIcon />
-                                  </IconButton>
-                                </Grid>
-                              </Grid> */}
+                                  <Grid item xs={1} sx={{ position: "relative" }}>
+                                    <IconButton
+                                      type="button"
+                                      onClick={() => remove(index)}
+                                      sx={{ position: "absolute", bottom: 0 }}
+                                    >
+                                      <DeleteIcon />
+                                    </IconButton>
+                                  </Grid>
+                                </Grid> */}
                           </div>
                         ))}
                       <Stack spacing={0}>
@@ -123,7 +132,7 @@ const ProductionSchemasForm = () => {
                         <AddIcon />
                       </Fab>
                     </Box>
-                  </div>
+                  </StyledFormRow>
                 )}
               </FieldArray>
             </Form>
