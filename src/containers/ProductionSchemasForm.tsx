@@ -42,7 +42,7 @@ const fieldInitialEmptyValues = {
   name: "Nom du schéma de production",
   batches: [
     {
-      productionDay: "00"
+      productionDay: "2"
     }
   ]
 };
@@ -81,7 +81,7 @@ const ProductionSchemasForm = () => {
         innerRef={formikRef}
         validationSchema={productionSchemasSchema}
       >
-        {({ values }) => {
+        {({ values, setFieldValue }) => {
           return (
             <Form className="flexColumn stretchSelf flex1">
               <FieldArray name="productionSchemas">
@@ -150,6 +150,7 @@ const ProductionSchemasForm = () => {
                                 }
                                 parentIndex={index}
                                 name={`productionSchemas.${index}.batches`}
+                                setFieldValue={setFieldValue}
                               />
                             </div>
                           </StyledFormRow>

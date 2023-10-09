@@ -1,33 +1,58 @@
-import React, { useRef } from "react";
-import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
+import React from "react";
+import { Field, ErrorMessage, FieldArray } from "formik";
 import {
-  Box,
-  Button,
-  Fab,
   FormHelperText,
+  ListItemText,
+  MenuItem,
+  Select,
   Stack,
-  TextField,
-  Typography,
-  styled
+  TextField
 } from "@mui/material";
 // import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
+import { weekDaysOptions } from "../utils/productionSchemasUtils";
 
-const FormikTextField = ({ field, ...props }) => (
+const FormikTextField = ({ options = [], field, ...props }) => (
   <TextField {...field} {...props} />
 );
+
+// const FormikSelectField = ({ options, ...props }) => {
+const FormikSelectField = ({ field, options, ...props }) => {
+  console.log("field", props);
+  return (
+    <Select
+      variant="standard"
+      {...field}
+      {...props}
+      onChange={(e) => {
+        props.form.setFieldValue(field.name, e.target.value);
+      }}
+    >
+      {options.map((option) => (
+        <MenuItem key={option.value} value={option.value}>
+          {/* <Checkbox
+                  checked={values.productTypes.indexOf(option.value) > -1}
+                  color="secondary"
+              /> */}
+          <ListItemText primary={option.label} />
+        </MenuItem>
+      ))}
+    </Select>
+  );
+};
 
 type Props = {
   name: string;
   batches: any[];
   parentIndex: number;
+  setFieldValue: any;
 };
 const ProductionSchemaBatchesField = ({
   name,
   batches,
-  parentIndex
+  parentIndex,
+  setFieldValue
 }: Props) => {
-  // console.log('batches', `${name}.${index}.productionDay`)
   return (
     <FieldArray name={name}>
       {({ remove, insert }) => (
@@ -42,9 +67,10 @@ const ProductionSchemaBatchesField = ({
                   <Stack spacing={1}>
                     <Field
                       name={`${name}.${index}.productionDay`}
-                      component={FormikTextField}
+                      component={FormikSelectField}
                       placeholder="Day"
                       variant="standard"
+                      options={weekDaysOptions}
                     />
                     <ErrorMessage
                       name={`${name}.${index}.productionDay`}
