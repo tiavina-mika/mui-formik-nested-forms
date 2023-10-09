@@ -44,3 +44,13 @@ export const weekDaysOptions = [
     value: "6"
   }
 ];
+
+export const productionSchemaBatchInitialValues = {
+  productionDay: "2",
+  packagingDay: "3"
+};
+
+export const productionSchemaInitialValues = {
+  name: "Nom du schéma de production",
+  batches: [productionSchemaBatchInitialValues]
+};

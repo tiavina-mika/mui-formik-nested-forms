@@ -16,6 +16,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { IProductSchemasFormValues } from "../types/productionSchemas.type";
 import { productionSchemasSchema } from "../utils/validations/productionSchemas";
 import ProductionSchemaBatchesField from "./ProductionSchemaBatchesField";
+import { productionSchemaInitialValues } from "../utils/productionSchemasUtils";
 
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
@@ -38,18 +39,8 @@ const StyledFormRowLabel = styled("div")({
 
 const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];
 
-const fieldInitialEmptyValues = {
-  name: "Nom du schéma de production",
-  batches: [
-    {
-      productionDay: "2",
-      packagingDay: "3"
-    }
-  ]
-};
-
 const initialValues: IProductSchemasFormValues = {
-  productionSchemas: [fieldInitialEmptyValues]
+  productionSchemas: [productionSchemaInitialValues]
 };
 
 const ProductionSchemasForm = () => {

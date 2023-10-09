@@ -2,6 +2,7 @@ import React from "react";
 import { Field, ErrorMessage, FieldArray } from "formik";
 import {
   FormHelperText,
+  IconButton,
   ListItemText,
   MenuItem,
   Select,
@@ -10,7 +11,10 @@ import {
 } from "@mui/material";
 // import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import { weekDaysOptions } from "../utils/productionSchemasUtils";
+import {
+  productionSchemaBatchInitialValues,
+  weekDaysOptions
+} from "../utils/productionSchemasUtils";
 
 const FormikTextField = ({ options = [], field, ...props }) => (
   <TextField {...field} {...props} />
@@ -54,16 +58,21 @@ const ProductionSchemaBatchesField = ({
 }: Props) => {
   return (
     <FieldArray name={name}>
-      {({ remove, insert }) => (
+      {({ remove, push }) => (
         <div className="flexColumn stretchSelf">
           <Stack spacing={1} className="stretchSelf">
             {batches.length &&
               batches.map((_, index: number) => (
-                <div
-                  key={parentIndex + index}
-                  className="flexRow center"
-                  // className="flexColumn justifyCenter"
-                >
+                <div key={parentIndex + index} className="flexRow center">
+                  {/* add button */}
+                  <IconButton
+                    onClick={() => {
+                      push(productionSchemaBatchInitialValues);
+                    }}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                  {/* production day & packaging day */}
                   {weekDays.map((weekday, weekDayIndex) => (
                     <Stack spacing={1} key={weekday + weekDayIndex}>
                       <Field
