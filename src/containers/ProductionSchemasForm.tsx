@@ -12,6 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 
 import { IProductSchemasFormValues } from "../types/productionSchemas.type";
+import { productionSchemasSchema } from "../utils/validations/productionSchemas";
 
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
@@ -54,7 +55,7 @@ const ProductionSchemasForm = () => {
         initialValues={initialValues}
         onSubmit={handleSubmit}
         innerRef={formikRef}
-        // validationSchema={ReportOrderRDSchema}
+        validationSchema={productionSchemasSchema}
       >
         {({ values, setFieldValue }) => {
           return (
