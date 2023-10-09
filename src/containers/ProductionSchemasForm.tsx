@@ -42,7 +42,8 @@ const fieldInitialEmptyValues = {
   name: "Nom du schéma de production",
   batches: [
     {
-      productionDay: "2"
+      productionDay: "2",
+      packagingDay: "3"
     }
   ]
 };

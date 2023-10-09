@@ -18,7 +18,6 @@ const FormikTextField = ({ options = [], field, ...props }) => (
 
 // const FormikSelectField = ({ options, ...props }) => {
 const FormikSelectField = ({ field, options, ...props }) => {
-  console.log("field", props);
   return (
     <Select
       variant="standard"
@@ -41,6 +40,8 @@ const FormikSelectField = ({ field, options, ...props }) => {
   );
 };
 
+const weekDays = ["productionDay", "packagingDay"];
+
 type Props = {
   name: string;
   batches: any[];
@@ -60,23 +61,26 @@ const ProductionSchemaBatchesField = ({
               batches.map((_, index: number) => (
                 <div
                   key={parentIndex + index}
-                  className="flexColumn justifyCenter"
+                  className="flexRow center"
+                  // className="flexColumn justifyCenter"
                 >
-                  <Stack spacing={1}>
-                    <Field
-                      name={`${name}.${index}.productionDay`}
-                      component={FormikSelectField}
-                      placeholder="Day"
-                      variant="standard"
-                      options={weekDaysOptions}
-                    />
-                    <ErrorMessage
-                      name={`${name}.${index}.productionDay`}
-                      render={(message: string) => (
-                        <FormHelperText error>{message}</FormHelperText>
-                      )}
-                    />
-                  </Stack>
+                  {weekDays.map((weekday, weekDayIndex) => (
+                    <Stack spacing={1} key={weekday + weekDayIndex}>
+                      <Field
+                        name={`${name}.${index}.${weekday}`}
+                        component={FormikSelectField}
+                        placeholder="Day"
+                        variant="standard"
+                        options={weekDaysOptions}
+                      />
+                      <ErrorMessage
+                        name={`${name}.${index}.${weekday}`}
+                        render={(message: string) => (
+                          <FormHelperText error>{message}</FormHelperText>
+                        )}
+                      />
+                    </Stack>
+                  ))}
                 </div>
               ))}
             <Stack spacing={0}>

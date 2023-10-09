@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 
 const batchSchema = Yup.object().shape({
-  productionDay: Yup.string().required("Production day required")
+  productionDay: Yup.string().required("Production day required"),
+  packagingDay: Yup.string().required("Packaging day required")
 });
 
 export const productionSchemasSchema = Yup.object().shape({
