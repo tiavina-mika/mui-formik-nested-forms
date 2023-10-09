@@ -1,8 +1,16 @@
 import * as Yup from "yup";
 
+const sellDaysSchema = Yup.array().of(
+  Yup.object().shape({
+    brand: Yup.string(),
+    days: Yup.array().of(Yup.string())
+  })
+);
+
 const batchSchema = Yup.object().shape({
   productionDay: Yup.string().required("Production day required"),
-  packagingDay: Yup.string().required("Packaging day required")
+  packagingDay: Yup.string().required("Packaging day required"),
+  sellDays: sellDaysSchema
 });
 
 export const productionSchemasSchema = Yup.object().shape({

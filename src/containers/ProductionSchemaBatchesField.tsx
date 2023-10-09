@@ -62,7 +62,7 @@ const ProductionSchemaBatchesField = ({
         <div className="flexColumn stretchSelf">
           <Stack spacing={1} className="stretchSelf">
             {batches.length &&
-              batches.map((_, index: number) => (
+              batches.map((batch, index: number) => (
                 <div key={parentIndex + index} className="flexRow center">
                   {/* add button */}
                   <IconButton
@@ -92,6 +92,29 @@ const ProductionSchemaBatchesField = ({
                         />
                       </Stack>
                     ))}
+
+                    {/* production day & packaging day */}
+                    <Stack direction="row" spacing={2}>
+                      {batch.sellDays.map((sellDay, sellDayIndex) => (
+                        <Stack spacing={1} key={sellDay + sellDayIndex}>
+                          <Field
+                            name={`${name}.${index}.sellDays.${sellDayIndex}.days`}
+                            component={FormikSelectField}
+                            placeholder="Day"
+                            variant="standard"
+                            options={weekDaysOptions}
+                            sx={{ minWidth: 100 }}
+                            multiple
+                          />
+                          <ErrorMessage
+                            name={`${name}.${index}.sellDays.${sellDayIndex}`}
+                            render={(message: string) => (
+                              <FormHelperText error>{message}</FormHelperText>
+                            )}
+                          />
+                        </Stack>
+                      ))}
+                    </Stack>
                   </Stack>
                 </div>
               ))}

@@ -47,7 +47,21 @@ export const weekDaysOptions = [
 
 export const productionSchemaBatchInitialValues = {
   productionDay: "2",
-  packagingDay: "3"
+  packagingDay: "3",
+  sellDays: [
+    {
+      brand: "FOODCHERI",
+      days: ["2", "3"]
+    },
+    {
+      brand: "SEAZON",
+      days: []
+    },
+    {
+      brand: "SEAZON_BE",
+      days: []
+    }
+  ]
 };
 
 export const productionSchemaInitialValues = {
