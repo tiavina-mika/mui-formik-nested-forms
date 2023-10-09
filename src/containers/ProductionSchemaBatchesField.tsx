@@ -45,13 +45,11 @@ type Props = {
   name: string;
   batches: any[];
   parentIndex: number;
-  setFieldValue: any;
 };
 const ProductionSchemaBatchesField = ({
   name,
   batches,
-  parentIndex,
-  setFieldValue
+  parentIndex
 }: Props) => {
   return (
     <FieldArray name={name}>

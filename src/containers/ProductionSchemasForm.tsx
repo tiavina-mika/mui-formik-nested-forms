@@ -150,7 +150,6 @@ const ProductionSchemasForm = () => {
                                 }
                                 parentIndex={index}
                                 name={`productionSchemas.${index}.batches`}
-                                setFieldValue={setFieldValue}
                               />
                             </div>
                           </StyledFormRow>
