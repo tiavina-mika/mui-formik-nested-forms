@@ -9,7 +9,7 @@ import {
   TextField,
   styled
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+// import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 
 import { IProductSchemasFormValues } from "../types/productionSchemas.type";
@@ -23,6 +23,11 @@ const StyledFormRow = styled("div")({
   borderRadius: 6,
   border: "1px solid #E6E6E6",
   background: "#FFF"
+});
+
+const StyledFormRowHeader = styled("div")({
+  backgroundColor: "#F0F0F0",
+  padding: 16
 });
 
 const fieldInitialEmptyValues = {
@@ -69,30 +74,35 @@ const ProductionSchemasForm = () => {
             <Form className="flexColumn stretchSelf flex1">
               <FieldArray name="productionSchemas">
                 {({ remove, insert }) => (
-                  <StyledFormRow className="flexColumn stretchSelf">
+                  <div className="flexColumn stretchSelf">
                     <Stack spacing={1} className="stretchSelf">
                       {values.productionSchemas.length &&
                         values.productionSchemas.map((_, index: number) => (
-                          <div key={index} className="flexRow justifyCenter">
-                            <Box>
-                              {/* <Grid item xs={3}> */}
-                              <Stack spacing={1}>
-                                <Field
-                                  name={`productionSchemas.${index}.name`}
-                                  component={FormikTextField}
-                                  placeholder="Name"
-                                  variant="standard"
-                                />
-                                <ErrorMessage
-                                  name={`productionSchemas.${index}.name`}
-                                  render={(message: string) => (
-                                    <FormHelperText error>
-                                      {message}
-                                    </FormHelperText>
-                                  )}
-                                />
-                              </Stack>
-                            </Box>
+                          <StyledFormRow
+                            key={index}
+                            className="flexRow justifyCenter"
+                          >
+                            <StyledFormRowHeader className="flexCenter flex1">
+                              <div>
+                                {/* <Grid item xs={3}> */}
+                                <Stack spacing={1}>
+                                  <Field
+                                    name={`productionSchemas.${index}.name`}
+                                    component={FormikTextField}
+                                    placeholder="Name"
+                                    variant="standard"
+                                  />
+                                  <ErrorMessage
+                                    name={`productionSchemas.${index}.name`}
+                                    render={(message: string) => (
+                                      <FormHelperText error>
+                                        {message}
+                                      </FormHelperText>
+                                    )}
+                                  />
+                                </Stack>
+                              </div>
+                            </StyledFormRowHeader>
                             {/* </Grid>
                                   <Grid item xs={1} sx={{ position: "relative" }}>
                                     <IconButton
@@ -104,7 +114,7 @@ const ProductionSchemasForm = () => {
                                     </IconButton>
                                   </Grid>
                                 </Grid> */}
-                          </div>
+                          </StyledFormRow>
                         ))}
                       <Stack spacing={0}>
                         <ErrorMessage
@@ -132,7 +142,7 @@ const ProductionSchemasForm = () => {
                         <AddIcon />
                       </Fab>
                     </Box>
-                  </StyledFormRow>
+                  </div>
                 )}
               </FieldArray>
             </Form>
