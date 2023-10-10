@@ -1,13 +1,14 @@
 import React from "react";
 import { Field, FieldArray } from "formik";
 import {
+  Box,
   IconButton,
   ListItemText,
   MenuItem,
   Select,
   Stack
 } from "@mui/material";
-// import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import {
   productionSchemaBatchInitialValues,
@@ -60,39 +61,45 @@ const ProductionSchemaBatchesField = ({
               batches.map((batch, index: number) => (
                 // row
                 <div key={parentIndex + index} className="flexRow center">
-                  {/* add button */}
-                  <IconButton
-                    onClick={() => {
-                      push(productionSchemaBatchInitialValues);
-                    }}
-                  >
-                    <AddIcon />
-                  </IconButton>
-                  {/* production day & packaging day */}
-                  <Stack direction="row" spacing={2}>
+                  {/* --------- left --------- */}
+                  <Box sx={{ width: 46 }} className="flexCenter">
+                    <IconButton
+                      onClick={() => {
+                        push(productionSchemaBatchInitialValues);
+                      }}
+                    >
+                      <AddIcon />
+                    </IconButton>
+                  </Box>
+
+                  {/* --------- center --------- */}
+                  <Stack direction="row" spacing={2} className="flex1">
+                    {/* production day & packaging day (2 first fields) */}
                     {weekDays.map((weekday, weekDayIndex) => (
-                      <Stack spacing={1} key={weekday + weekDayIndex}>
+                      <Stack
+                        spacing={1}
+                        key={weekday + weekDayIndex}
+                        className="flex1"
+                      >
                         <Field
                           name={`${name}.${index}.${weekday}`}
                           component={FormikSelectField}
                           placeholder="Day"
                           variant="standard"
                           options={weekDaysOptions}
-                          // sx={{ minWidth: 100 }}
                         />
                         <FormikErrorMessage
                           name={`${name}.${index}.${weekday}`}
                         />
                       </Stack>
                     ))}
-                  </Stack>
-                  {/* production day & packaging day */}
-                  <Stack direction="row" spacing={2} className="flexRow flex1">
+
+                    {/* sell day by brand (3 last fields) */}
                     {batch.sellDays.map((sellDay, sellDayIndex) => (
                       <Stack
                         spacing={1}
                         key={sellDay + sellDayIndex}
-                        className="flex1"
+                        className="flexColumn flex1"
                       >
                         <Field
                           name={`${name}.${index}.sellDays.${sellDayIndex}.days`}
@@ -100,9 +107,9 @@ const ProductionSchemaBatchesField = ({
                           placeholder="Day"
                           variant="standard"
                           options={weekDaysOptions}
-                          sx={{ minWidth: 100 }}
                           multiple
                           renderValue={renderWeekDaysLabels}
+                          className="stretchSelf flex1"
                         />
                         <FormikErrorMessage
                           name={`${name}.${index}.sellDays.${sellDayIndex}`}
@@ -110,6 +117,12 @@ const ProductionSchemaBatchesField = ({
                       </Stack>
                     ))}
                   </Stack>
+                  {/* --------- right --------- */}
+                  <Box sx={{ width: 46 }} className="flexCenter">
+                    <IconButton onClick={() => remove(index)}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </Box>
                 </div>
               ))}
             <Stack spacing={0}>
