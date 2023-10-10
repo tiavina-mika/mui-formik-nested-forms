@@ -71,7 +71,7 @@ const ProductionSchemasForm = () => {
         innerRef={formikRef}
         validationSchema={productionSchemasSchema}
       >
-        {({ values, setFieldValue }) => {
+        {({ values }) => {
           return (
             <Form className="flexColumn stretchSelf flex1">
               <FieldArray name="productionSchemas">
