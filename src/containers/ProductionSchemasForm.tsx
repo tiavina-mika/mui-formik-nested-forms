@@ -39,7 +39,7 @@ const ProductionSchemasForm = () => {
   const handleCancel = () => console.log("cancel");
 
   const handleSubmit = (values: any) => {
-    console.log("values", values);
+    console.log("values", JSON.stringify(values));
   };
 
   return (
