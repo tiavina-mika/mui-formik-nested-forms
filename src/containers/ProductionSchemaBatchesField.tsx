@@ -67,6 +67,7 @@ const ProductionSchemaBatchesField = ({
                       onClick={() => {
                         push(productionSchemaBatchInitialValues);
                       }}
+                      color="primary"
                     >
                       <AddIcon />
                     </IconButton>
