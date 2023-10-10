@@ -8,11 +8,12 @@ import { productionSchemasSchema } from "../utils/validations/productionSchemas"
 import ProductionSchemaBatchesField from "./ProductionSchemaBatchesField";
 import {
   PRODUCTION_SCHEMA_BORDER_COLOR,
-  productionSchemaInitialValues,
-  productionSchemasInitialValues
+  getProductionSchemasInitialValues,
+  productionSchemaInitialValues
 } from "../utils/productionSchemasUtils";
 import FormikErrorMessage from "../components/FormikErrorMessage";
 import ProductionSchemasFormHeader from "./ProductionSchemasFormHeader";
+import { productionSchemas } from "../utils/data/productionSchema";
 
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
@@ -39,7 +40,8 @@ const ProductionSchemasForm = () => {
   const handleCancel = () => console.log("cancel");
 
   const handleSubmit = (values: any) => {
-    console.log("values", JSON.stringify(values));
+    console.log("values", values);
+    // console.log("values", JSON.stringify(values));
   };
 
   return (
@@ -53,7 +55,7 @@ const ProductionSchemasForm = () => {
         </Stack>
       </div>
       <Formik
-        initialValues={productionSchemasInitialValues}
+        initialValues={getProductionSchemasInitialValues()}
         onSubmit={handleSubmit}
         innerRef={formikRef}
         validationSchema={productionSchemasSchema}

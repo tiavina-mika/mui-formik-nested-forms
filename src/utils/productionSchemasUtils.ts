@@ -1,3 +1,6 @@
+import { IProductSchemas } from "../types/productionSchemas.type";
+import { productionSchemas } from "./data/productionSchema";
+
 export const PRODUCTION_SCHEMA_BORDER_COLOR = "#E6E6E6";
 
 export const daysOptions = [
@@ -86,9 +89,26 @@ export const renderWeekDaysLabels = (dayNumbers: string[]): string => {
 
 export const productionSchemaInitialValues = {
   name: "Nom du schéma de production",
-  batches: [productionSchemaBatchInitialValues]
+  batches: [productionSchemaBatchInitialValues],
+  isNew: true // if it's a creation
 };
 
-export const productionSchemasInitialValues = {
+export const productionSchemasEmptyInitialValues = {
   productionSchemas: [productionSchemaInitialValues]
+};
+
+export const productionSchemasExistingInitialValues = {
+  productionSchemas
+};
+
+export const getProductionSchemasInitialValues = (
+  productionSchemas?: IProductSchemas
+) => {
+  if (productionSchemas?.length) {
+    return {
+      productionSchemas
+    };
+  }
+
+  return productionSchemasEmptyInitialValues;
 };
