@@ -1,24 +1,4 @@
-export const weekDaysOptions = [
-  {
-    label: "Mercredi-1",
-    value: "3-1"
-  },
-  {
-    label: "Jeudi-1",
-    value: "4-1"
-  },
-  {
-    label: "Vendredi-1",
-    value: "5-1"
-  },
-  {
-    label: "Lundi-1",
-    value: "1-1"
-  },
-  {
-    label: "Dimanche-1",
-    value: "7-1"
-  },
+export const daysOptions = [
   {
     label: "Lundi",
     value: "1"
@@ -42,7 +22,37 @@ export const weekDaysOptions = [
   {
     label: "Samedi",
     value: "6"
+  },
+  {
+    label: "Dimanche",
+    value: "7"
   }
+];
+
+const daysWithoutSunday = daysOptions.slice(0, daysOptions.length - 1);
+
+export const weekDaysOptions = [
+  {
+    label: "Mercredi-1",
+    value: "3-1"
+  },
+  {
+    label: "Jeudi-1",
+    value: "4-1"
+  },
+  {
+    label: "Vendredi-1",
+    value: "5-1"
+  },
+  {
+    label: "Lundi-1",
+    value: "1-1"
+  },
+  {
+    label: "Dimanche-1",
+    value: "7-1"
+  },
+  ...daysWithoutSunday
 ];
 
 export const productionSchemaBatchInitialValues = {
@@ -62,6 +72,14 @@ export const productionSchemaBatchInitialValues = {
       days: []
     }
   ]
+};
+
+export const renderWeekDaysLabels = (dayNumbers: string[]): string => {
+  const days = weekDaysOptions.filter((option) =>
+    dayNumbers.includes(option.value)
+  );
+  const label = days.map((day) => day.label).join(", ");
+  return label;
 };
 
 export const productionSchemaInitialValues = {

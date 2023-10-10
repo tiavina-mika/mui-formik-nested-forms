@@ -13,6 +13,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import {
   productionSchemaBatchInitialValues,
+  renderWeekDaysLabels,
   weekDaysOptions
 } from "../utils/productionSchemasUtils";
 
@@ -105,7 +106,7 @@ const ProductionSchemaBatchesField = ({
                             options={weekDaysOptions}
                             sx={{ minWidth: 100 }}
                             multiple
-                            renderValue={(selected) => selected.join(", ")}
+                            renderValue={renderWeekDaysLabels}
                           />
                           <ErrorMessage
                             name={`${name}.${index}.sellDays.${sellDayIndex}`}
