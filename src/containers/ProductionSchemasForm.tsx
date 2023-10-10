@@ -120,7 +120,10 @@ const ProductionSchemasForm = () => {
                                 >
                                   <div className="center flex1 flexRow justifyCenter stretchSelf">
                                     {brands.map((brand, index) => (
-                                      <div className="flex1 flexCenter">
+                                      <div
+                                        className="flex1 flexCenter"
+                                        key={brand + index}
+                                      >
                                         {brand}
                                       </div>
                                     ))}
