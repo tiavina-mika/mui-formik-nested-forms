@@ -131,7 +131,7 @@ const ProductionSchemasForm = () => {
                                 </Box>
                               </div>
                             </StyledFormRowLabel>
-                            <div>
+                            <div className="stretchSelf">
                               <ProductionSchemaBatchesField
                                 batches={
                                   values.productionSchemas[index].batches
