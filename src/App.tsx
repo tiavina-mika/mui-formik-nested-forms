@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ProductionSchemasForm from "./containers/ProductionSchemasForm";
 
 const App = () => {
