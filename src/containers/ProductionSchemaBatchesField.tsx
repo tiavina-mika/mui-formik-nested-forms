@@ -78,7 +78,7 @@ const ProductionSchemaBatchesField = ({
                           placeholder="Day"
                           variant="standard"
                           options={weekDaysOptions}
-                          sx={{ minWidth: 100 }}
+                          // sx={{ minWidth: 100 }}
                         />
                         <FormikErrorMessage
                           name={`${name}.${index}.${weekday}`}
