@@ -33,7 +33,6 @@ const ProductionSchemasForm = () => {
   const formikRef = useRef();
 
   const handleConfirm = () => {
-    // if (!formikRef.current) return;
     (formikRef.current as any)?.submitForm();
   };
 
@@ -81,6 +80,7 @@ const ProductionSchemasForm = () => {
                                     component={FormikTextField}
                                     placeholder="Name"
                                     variant="standard"
+                                    sx={{ minWidth: 240 }}
                                   />
                                   <FormikErrorMessage
                                     name={`productionSchemas.${index}.name`}
