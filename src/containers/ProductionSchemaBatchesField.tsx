@@ -58,6 +58,7 @@ const ProductionSchemaBatchesField = ({
           <Stack spacing={1} className="stretchSelf">
             {batches.length &&
               batches.map((batch, index: number) => (
+                // row
                 <div key={parentIndex + index} className="flexRow center">
                   {/* add button */}
                   <IconButton
@@ -84,27 +85,30 @@ const ProductionSchemaBatchesField = ({
                         />
                       </Stack>
                     ))}
-
-                    {/* production day & packaging day */}
-                    <Stack direction="row" spacing={2}>
-                      {batch.sellDays.map((sellDay, sellDayIndex) => (
-                        <Stack spacing={1} key={sellDay + sellDayIndex}>
-                          <Field
-                            name={`${name}.${index}.sellDays.${sellDayIndex}.days`}
-                            component={FormikSelectField}
-                            placeholder="Day"
-                            variant="standard"
-                            options={weekDaysOptions}
-                            sx={{ minWidth: 100 }}
-                            multiple
-                            renderValue={renderWeekDaysLabels}
-                          />
-                          <FormikErrorMessage
-                            name={`${name}.${index}.sellDays.${sellDayIndex}`}
-                          />
-                        </Stack>
-                      ))}
-                    </Stack>
+                  </Stack>
+                  {/* production day & packaging day */}
+                  <Stack direction="row" spacing={2} className="flexRow flex1">
+                    {batch.sellDays.map((sellDay, sellDayIndex) => (
+                      <Stack
+                        spacing={1}
+                        key={sellDay + sellDayIndex}
+                        className="flex1"
+                      >
+                        <Field
+                          name={`${name}.${index}.sellDays.${sellDayIndex}.days`}
+                          component={FormikSelectField}
+                          placeholder="Day"
+                          variant="standard"
+                          options={weekDaysOptions}
+                          sx={{ minWidth: 100 }}
+                          multiple
+                          renderValue={renderWeekDaysLabels}
+                        />
+                        <FormikErrorMessage
+                          name={`${name}.${index}.sellDays.${sellDayIndex}`}
+                        />
+                      </Stack>
+                    ))}
                   </Stack>
                 </div>
               ))}
