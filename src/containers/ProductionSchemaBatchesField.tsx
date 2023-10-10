@@ -11,6 +11,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import {
+  daysOptions,
   productionSchemaBatchInitialValues,
   renderWeekDaysLabels,
   weekDaysOptions
@@ -107,7 +108,7 @@ const ProductionSchemaBatchesField = ({
                           component={FormikSelectField}
                           placeholder="Day"
                           variant="standard"
-                          options={weekDaysOptions}
+                          options={daysOptions}
                           multiple
                           renderValue={renderWeekDaysLabels}
                           className="stretchSelf flex1"
