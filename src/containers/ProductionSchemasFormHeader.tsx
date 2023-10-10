@@ -10,11 +10,6 @@ const StyledFormRowLabel = styled("div")({
   borderBottom: border
 });
 
-const StyledBrandsRow = styled("div")({
-  flex: 3,
-  borderLeft: "1px solid " + PRODUCTION_SCHEMA_BORDER_COLOR
-});
-
 const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];
 
 const ProductionSchemasFormHeader = () => {
@@ -48,7 +43,7 @@ const ProductionSchemasFormHeader = () => {
             {brands.map((brand, index) => (
               <Box
                 sx={{ borderLeft: border }}
-                className="flex1 flexCenter stretchSelf"
+                className="flex1 flexRow justifyCenter center stretchSelf"
                 key={brand + index}
               >
                 {brand}
@@ -56,6 +51,12 @@ const ProductionSchemasFormHeader = () => {
             ))}
           </div>
         </Box>
+      </Box>
+      {/* empty right col */}
+      <Box sx={{ width: 46 }} className="flexCenter stretchSelf">
+        {/* mock the top */}
+        <div className="flex1" />
+        <Box sx={{ height: 52, borderTop: border }} className="stretchSelf" />
       </Box>
     </StyledFormRowLabel>
   );
