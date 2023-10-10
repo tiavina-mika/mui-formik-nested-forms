@@ -7,6 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { productionSchemasSchema } from "../utils/validations/productionSchemas";
 import ProductionSchemaBatchesField from "./ProductionSchemaBatchesField";
 import {
+  PRODUCTION_SCHEMA_BORDER_COLOR,
   productionSchemaInitialValues,
   productionSchemasInitialValues
 } from "../utils/productionSchemasUtils";
@@ -19,7 +20,7 @@ const FormikTextField = ({ field, ...props }) => (
 
 const StyledFormRow = styled("div")({
   borderRadius: 6,
-  border: "1px solid #E6E6E6",
+  border: "1px solid " + PRODUCTION_SCHEMA_BORDER_COLOR,
   background: "#FFF"
 });
 

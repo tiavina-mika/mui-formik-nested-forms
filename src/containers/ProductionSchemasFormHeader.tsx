@@ -1,10 +1,11 @@
 import React from "react";
 import { Box, Typography, styled } from "@mui/material";
+import { PRODUCTION_SCHEMA_BORDER_COLOR } from "../utils/productionSchemasUtils";
 
 const StyledFormRowLabel = styled("div")({
   backgroundColor: "#F0F9FF",
-  borderTop: "1px solid #E6E6E6",
-  borderBottom: "1px solid #E6E6E6"
+  borderTop: "1px solid " + PRODUCTION_SCHEMA_BORDER_COLOR,
+  borderBottom: "1px solid " + PRODUCTION_SCHEMA_BORDER_COLOR
 });
 
 const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];

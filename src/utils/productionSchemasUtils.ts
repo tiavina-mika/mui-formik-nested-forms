@@ -1,3 +1,5 @@
+export const PRODUCTION_SCHEMA_BORDER_COLOR = "#E6E6E6";
+
 export const daysOptions = [
   {
     label: "Lundi",
