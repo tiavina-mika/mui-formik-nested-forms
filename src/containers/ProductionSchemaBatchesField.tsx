@@ -1,13 +1,11 @@
 import React from "react";
-import { Field, ErrorMessage, FieldArray } from "formik";
+import { Field, FieldArray } from "formik";
 import {
-  FormHelperText,
   IconButton,
   ListItemText,
   MenuItem,
   Select,
-  Stack,
-  TextField
+  Stack
 } from "@mui/material";
 // import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
@@ -16,12 +14,8 @@ import {
   renderWeekDaysLabels,
   weekDaysOptions
 } from "../utils/productionSchemasUtils";
+import FormikErrorMessage from "../components/FormikErrorMessage";
 
-const FormikTextField = ({ options = [], field, ...props }) => (
-  <TextField {...field} {...props} />
-);
-
-// const FormikSelectField = ({ options, ...props }) => {
 const FormikSelectField = ({ field, options, ...props }) => {
   return (
     <Select
@@ -85,11 +79,8 @@ const ProductionSchemaBatchesField = ({
                           options={weekDaysOptions}
                           sx={{ minWidth: 100 }}
                         />
-                        <ErrorMessage
+                        <FormikErrorMessage
                           name={`${name}.${index}.${weekday}`}
-                          render={(message: string) => (
-                            <FormHelperText error>{message}</FormHelperText>
-                          )}
                         />
                       </Stack>
                     ))}
@@ -108,11 +99,8 @@ const ProductionSchemaBatchesField = ({
                             multiple
                             renderValue={renderWeekDaysLabels}
                           />
-                          <ErrorMessage
+                          <FormikErrorMessage
                             name={`${name}.${index}.sellDays.${sellDayIndex}`}
-                            render={(message: string) => (
-                              <FormHelperText error>{message}</FormHelperText>
-                            )}
                           />
                         </Stack>
                       ))}
@@ -121,13 +109,7 @@ const ProductionSchemaBatchesField = ({
                 </div>
               ))}
             <Stack spacing={0}>
-              <ErrorMessage
-                name={name}
-                render={(message: string) => {
-                  if (typeof message !== "string") return;
-                  return <FormHelperText error>{message}</FormHelperText>;
-                }}
-              />
+              <FormikErrorMessage name={name} />
             </Stack>
           </Stack>
         </div>

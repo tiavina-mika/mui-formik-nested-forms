@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
-import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
+import { Formik, Field, Form, FieldArray } from "formik";
 import {
   Box,
   Button,
   Fab,
-  FormHelperText,
   Stack,
   TextField,
   Typography,
@@ -19,6 +18,7 @@ import {
   productionSchemaInitialValues,
   productionSchemasInitialValues
 } from "../utils/productionSchemasUtils";
+import FormikErrorMessage from "../components/FormikErrorMessage";
 
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
@@ -94,13 +94,8 @@ const ProductionSchemasForm = () => {
                                     placeholder="Name"
                                     variant="standard"
                                   />
-                                  <ErrorMessage
+                                  <FormikErrorMessage
                                     name={`productionSchemas.${index}.name`}
-                                    render={(message: string) => (
-                                      <FormHelperText error>
-                                        {message}
-                                      </FormHelperText>
-                                    )}
                                   />
                                 </Stack>
                               </div>
@@ -144,17 +139,9 @@ const ProductionSchemasForm = () => {
                             </div>
                           </StyledFormRow>
                         ))}
-                      <Stack spacing={0}>
-                        <ErrorMessage
-                          name="productionSchemas"
-                          render={(message: string) => {
-                            if (typeof message !== "string") return;
-                            return (
-                              <FormHelperText error>{message}</FormHelperText>
-                            );
-                          }}
-                        />
-                      </Stack>
+                      <div>
+                        <FormikErrorMessage name="productionSchemas" />
+                      </div>
                     </Stack>
                     {/* add icon */}
                     <Box sx={{ position: "fixed", left: 20, bottom: 20 }}>
