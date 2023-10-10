@@ -2,7 +2,9 @@ import React from "react";
 import { Box, Typography, styled } from "@mui/material";
 
 const StyledFormRowLabel = styled("div")({
-  backgroundColor: "#F0F9FF"
+  backgroundColor: "#F0F9FF",
+  borderTop: "1px solid #E6E6E6",
+  borderBottom: "1px solid #E6E6E6"
 });
 
 const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];
