@@ -2,10 +2,17 @@ import React from "react";
 import { Box, Typography, styled } from "@mui/material";
 import { PRODUCTION_SCHEMA_BORDER_COLOR } from "../utils/productionSchemasUtils";
 
+const border = "1px solid " + PRODUCTION_SCHEMA_BORDER_COLOR;
+
 const StyledFormRowLabel = styled("div")({
   backgroundColor: "#F0F9FF",
-  borderTop: "1px solid " + PRODUCTION_SCHEMA_BORDER_COLOR,
-  borderBottom: "1px solid " + PRODUCTION_SCHEMA_BORDER_COLOR
+  borderTop: border,
+  borderBottom: border
+});
+
+const StyledBrandsRow = styled("div")({
+  flex: 3,
+  borderLeft: "1px solid " + PRODUCTION_SCHEMA_BORDER_COLOR
 });
 
 const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];
@@ -20,22 +27,32 @@ const ProductionSchemasFormHeader = () => {
         <Typography>Jour de production</Typography>
       </div>
       {/* 3nd row */}
-      <div className="flexRow center stretchSelf flex1">
+      <Box
+        sx={{ borderLeft: border }}
+        className="flexRow center stretchSelf flex1"
+      >
         <Typography>Jour de barquettage</Typography>
-      </div>
+      </Box>
       {/* last row divide to 3 rows (brands) */}
       <Box className="flexCenter" sx={{ flex: 3 }}>
         {/* top: label */}
-        <Box sx={{ height: 48 }} className="flexCenter stretchSelf">
+        <Box
+          sx={{ height: 48, borderLeft: border, borderBottom: border }}
+          className="flexCenter stretchSelf"
+        >
           <Typography>Jour de vente</Typography>
         </Box>
         {/* bottom: fields */}
         <Box sx={{ height: 52 }} className="flexCenter stretchSelf">
           <div className="center flex1 flexRow justifyCenter stretchSelf">
             {brands.map((brand, index) => (
-              <div className="flex1 flexCenter" key={brand + index}>
+              <Box
+                sx={{ borderLeft: border }}
+                className="flex1 flexCenter stretchSelf"
+                key={brand + index}
+              >
                 {brand}
-              </div>
+              </Box>
             ))}
           </div>
         </Box>
