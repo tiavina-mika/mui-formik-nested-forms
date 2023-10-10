@@ -65,7 +65,7 @@ const ProductionSchemasForm = () => {
               <FieldArray name="productionSchemas">
                 {({ remove, insert }) => (
                   <div className="flexColumn stretchSelf">
-                    <Stack spacing={1} className="stretchSelf">
+                    <Stack spacing={3} className="stretchSelf">
                       {values.productionSchemas.length &&
                         values.productionSchemas.map((_, index: number) => (
                           <StyledFormRow
