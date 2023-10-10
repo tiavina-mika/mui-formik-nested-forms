@@ -56,9 +56,9 @@ const ProductionSchemaBatchesField = ({
     <FieldArray name={name}>
       {({ remove, push }) => (
         <div className="flexColumn stretchSelf">
-          <Stack spacing={1} className="stretchSelf">
-            {batches.length &&
-              batches.map((batch, index: number) => (
+          {batches.length && (
+            <Stack spacing={1} className="stretchSelf">
+              {batches.map((batch, index: number) => (
                 // row
                 <div key={parentIndex + index} className="flexRow center">
                   {/* --------- left --------- */}
@@ -125,10 +125,11 @@ const ProductionSchemaBatchesField = ({
                   </Box>
                 </div>
               ))}
-            <Stack spacing={0}>
-              <FormikErrorMessage name={name} />
+              <Stack spacing={0}>
+                <FormikErrorMessage name={name} />
+              </Stack>
             </Stack>
-          </Stack>
+          )}
         </div>
       )}
     </FieldArray>
