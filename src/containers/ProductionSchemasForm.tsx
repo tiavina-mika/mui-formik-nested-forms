@@ -19,6 +19,7 @@ import {
   productionSchemasInitialValues
 } from "../utils/productionSchemasUtils";
 import FormikErrorMessage from "../components/FormikErrorMessage";
+import ProductionSchemasFormHeader from "./ProductionSchemasFormHeader";
 
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
@@ -100,37 +101,7 @@ const ProductionSchemasForm = () => {
                                 </Stack>
                               </div>
                             </StyledFormRowHeader>
-                            <StyledFormRowLabel className="flexRow stretchSelf">
-                              <div className="flexCenter stretchSelf">
-                                <Typography>Jour de production</Typography>
-                              </div>
-                              <div className="flexCenter stretchSelf">
-                                <Typography>Jour de barquettage</Typography>
-                              </div>
-                              <div className="flexCenter flex1">
-                                <Box
-                                  sx={{ height: 48 }}
-                                  className="flexCenter stretchSelf"
-                                >
-                                  <Typography>Jour de vente</Typography>
-                                </Box>
-                                <Box
-                                  sx={{ height: 52 }}
-                                  className="flexCenter stretchSelf"
-                                >
-                                  <div className="center flex1 flexRow justifyCenter stretchSelf">
-                                    {brands.map((brand, index) => (
-                                      <div
-                                        className="flex1 flexCenter"
-                                        key={brand + index}
-                                      >
-                                        {brand}
-                                      </div>
-                                    ))}
-                                  </div>
-                                </Box>
-                              </div>
-                            </StyledFormRowLabel>
+                            <ProductionSchemasFormHeader />
                             <div className="stretchSelf">
                               <ProductionSchemaBatchesField
                                 batches={
