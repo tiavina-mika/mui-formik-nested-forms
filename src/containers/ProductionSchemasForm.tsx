@@ -110,7 +110,7 @@ const ProductionSchemasForm = () => {
                         color="primary"
                         onClick={() =>
                           insert(
-                            values.productionSchemas.length - 1,
+                            values.productionSchemas.length,
                             productionSchemaInitialValues
                           )
                         }
