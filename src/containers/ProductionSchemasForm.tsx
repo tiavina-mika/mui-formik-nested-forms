@@ -13,10 +13,12 @@ import {
 // import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 
-import { IProductSchemasFormValues } from "../types/productionSchemas.type";
 import { productionSchemasSchema } from "../utils/validations/productionSchemas";
 import ProductionSchemaBatchesField from "./ProductionSchemaBatchesField";
-import { productionSchemaInitialValues } from "../utils/productionSchemasUtils";
+import {
+  productionSchemaInitialValues,
+  productionSchemasInitialValues
+} from "../utils/productionSchemasUtils";
 
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
@@ -38,10 +40,6 @@ const StyledFormRowLabel = styled("div")({
 });
 
 const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];
-
-const initialValues: IProductSchemasFormValues = {
-  productionSchemas: [productionSchemaInitialValues]
-};
 
 const ProductionSchemasForm = () => {
   const formikRef = useRef();
@@ -68,7 +66,7 @@ const ProductionSchemasForm = () => {
         </Stack>
       </div>
       <Formik
-        initialValues={initialValues}
+        initialValues={productionSchemasInitialValues}
         onSubmit={handleSubmit}
         innerRef={formikRef}
         validationSchema={productionSchemasSchema}
@@ -165,7 +163,7 @@ const ProductionSchemasForm = () => {
                         onClick={() =>
                           insert(
                             values.productionSchemas.length - 1,
-                            fieldInitialEmptyValues
+                            productionSchemaInitialValues
                           )
                         }
                       >

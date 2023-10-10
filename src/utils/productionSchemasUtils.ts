@@ -68,3 +68,7 @@ export const productionSchemaInitialValues = {
   name: "Nom du schéma de production",
   batches: [productionSchemaBatchInitialValues]
 };
+
+export const productionSchemasInitialValues = {
+  productionSchemas: [productionSchemaInitialValues]
+};
