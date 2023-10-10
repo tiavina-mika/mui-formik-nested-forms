@@ -1,14 +1,6 @@
 import React, { useRef } from "react";
 import { Formik, Field, Form, FieldArray } from "formik";
-import {
-  Box,
-  Button,
-  Fab,
-  Stack,
-  TextField,
-  Typography,
-  styled
-} from "@mui/material";
+import { Box, Button, Fab, Stack, TextField, styled } from "@mui/material";
 // import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -35,12 +27,6 @@ const StyledFormRowHeader = styled("div")({
   backgroundColor: "#F0F0F0",
   padding: 16
 });
-
-const StyledFormRowLabel = styled("div")({
-  backgroundColor: "#F0F9FF"
-});
-
-const brands = ["FOODCHERI", "SEAZON", "SEAZON BE"];
 
 const ProductionSchemasForm = () => {
   const formikRef = useRef();
