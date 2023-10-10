@@ -44,7 +44,7 @@ const ProductionSchemasForm = () => {
   };
 
   return (
-    <div className="flexColumn stretchSelf flex1">
+    <Stack className="flexColumn stretchSelf flex1" spacing={2}>
       <div className="flexRow justifyEnd stretchSelf">
         <Stack direction="row" spacing={2}>
           <Button onClick={handleCancel}>Annuler</Button>
@@ -125,7 +125,7 @@ const ProductionSchemasForm = () => {
           );
         }}
       </Formik>
-    </div>
+    </Stack>
   );
 };
 
