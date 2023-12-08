@@ -1,7 +1,14 @@
 import React, { useRef } from "react";
 import { Formik, Field, Form, FieldArray } from "formik";
-import { Box, Button, Fab, Stack, TextField, styled } from "@mui/material";
-// import DeleteIcon from "@mui/icons-material/Delete";
+import {
+  Box,
+  Button,
+  Fab,
+  Stack,
+  TextField,
+  Typography,
+  styled
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 import { productionSchemasSchema } from "../utils/validations/productionSchemas";
@@ -13,7 +20,6 @@ import {
 } from "../utils/productionSchemasUtils";
 import FormikErrorMessage from "../components/FormikErrorMessage";
 import ProductionSchemasFormHeader from "./ProductionSchemasFormHeader";
-import { productionSchemas } from "../utils/data/productionSchema";
 
 const FormikTextField = ({ field, ...props }) => (
   <TextField {...field} {...props} />
@@ -41,12 +47,12 @@ const ProductionSchemasForm = () => {
 
   const handleSubmit = (values: any) => {
     console.log("values", values);
-    // console.log("values", JSON.stringify(values));
   };
 
   return (
     <Stack className="flexColumn stretchSelf flex1" spacing={2}>
-      <div className="flexRow justifyEnd stretchSelf">
+      <div className="flexRow spaceBetween stretchSelf">
+        <Typography>Mik.</Typography>
         <Stack direction="row" spacing={2}>
           <Button onClick={handleCancel}>Annuler</Button>
           <Button variant="contained" onClick={handleConfirm}>
@@ -64,7 +70,7 @@ const ProductionSchemasForm = () => {
           return (
             <Form className="flexColumn stretchSelf flex1">
               <FieldArray name="productionSchemas">
-                {({ remove, insert }) => (
+                {({ insert }) => (
                   <div className="flexColumn stretchSelf">
                     <Stack spacing={3} className="stretchSelf">
                       {values.productionSchemas.length &&
@@ -75,7 +81,6 @@ const ProductionSchemasForm = () => {
                           >
                             <StyledFormRowHeader className="flexCenter stretchSelf">
                               <div>
-                                {/* <Grid item xs={3}> */}
                                 <Stack spacing={1}>
                                   <Field
                                     name={`productionSchemas.${index}.name`}

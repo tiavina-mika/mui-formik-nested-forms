@@ -30,10 +30,6 @@ const FormikSelectField = ({ field, options, ...props }) => {
     >
       {options.map((option) => (
         <MenuItem key={option.value} value={option.value}>
-          {/* <Checkbox
-                  checked={values.productTypes.indexOf(option.value) > -1}
-                  color="secondary"
-              /> */}
           <ListItemText primary={option.label} />
         </MenuItem>
       ))}
